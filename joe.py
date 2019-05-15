@@ -9,6 +9,7 @@ from time import ctime
 import time
 import os
 import smtplib
+from weather import Weather, Unit
 import random
 import wikipedia #install using (pip install wikipedia)
 import wolframalpha #install using (pip install wolframalpha)
@@ -19,6 +20,7 @@ from gtts import gTTS
 
 your_name = "Harsh" #replace harsh with your name
 app_id = "8X6934-62AK2LTJPY" #replace with your wolframaplha app id
+ai_name = "John"
 
 client = wolframalpha.Client(app_id)
 
@@ -34,7 +36,7 @@ def recordAudio():
     # Record Audio
     r = sr.Recognizer()
     with sr.Microphone() as source:
-         speak("Anything else Sir!")
+         speak("What can i do for you?")
          audio = r.listen(source)
 
     # Speech recognition using Google Speech Recognition
@@ -61,8 +63,11 @@ def greetMe():
     if currentH >= 12 and currentH < 18:
         speak('Good Afternoon!')
 
-    if currentH >= 18 and currentH !=0:
+    if currentH >= 18 and currentH < 20:
         speak('Good Evening!')
+
+    if currentH >= 20 and currentH !=0:  
+        speak("Good Night!")  
 
 greetMe() #calling the variable to return the values
 
@@ -70,7 +75,7 @@ def joe(data):
 
     if "how are you" in data:
         speak("I am fine")
- 
+
     elif "open Google" in data:
         speak("yah i am trying")
         os.system("google-chrome www.google.com/")
@@ -79,41 +84,34 @@ def joe(data):
         speak("yah i am trying")
         os.system("google-chrome www.gmail.com/")  
 
-    elif "what time is it" in data:
-        speak(ctime())  
-
     elif "where is" in data:
         data = data.split(" ")
         location = data[2]
-        speak("Hold on Frank, I will show you where " + location + " is.")
-        os.system("google-chrome https://www.google.nl/maps/place/" + location + "/&amp;")
-        recordAudio()
+        speak("Hold on " + your_name + ", I will show you where " + location + " is.")
+        os.system("google-chrome https://www.google.nl/maps/place/" + location)
+ 
+    elif "what time is it" in data:
+        speak(ctime())
 
     elif "what\'s up" in data or "how are you" in data:
         stMsgs = ['Just doing my thing!', 'I am fine!', 'Nice!', 'I am nice and full of energy']
         speak(random.choice(stMsgs))
-        recordAudio()
 
-    elif 'nothing' in data or 'abort' in data or 'stop' in data:
-        speak('okay')
-        speak('Bye Sir, have a good day.')
+    elif "nothing" in data or "stop" in data or "bye" in data:
+        speak("okay")
+        speak("Bye Sir, have a good day")
         sys.exit()
            
-    elif 'hello' in data:
-        speak('Hello Sir')
+    elif "hello" in data:
+        speak("Hello Sir")
 
-    elif 'bye' in data:
-        speak('Bye Sir, have a good day.')
-        sys.exit()
-                                    
-        # elif 'play music' in query:
-        #     music_folder = /home/
-        #     music = [music1, music2, music3, music4, music5]
-        #     random_music = music_folder + random.choice(music) + '.mp3'
-        #     os.system(random_music)
-                  
-        #     speak('Okay, here is your music! Enjoy!')
-            
+    elif "remember that" in data:
+        data = data.split(" ")
+        remember_text = data[2]
+        speak("You told me to remember that" + remember_text)
+
+    elif "what i told you to remember" in data:
+        speak("You told me to remember that" + remember_text + ".")     
 
     else:
         data = data
@@ -133,7 +131,7 @@ def joe(data):
                 speak(results)
         
         except:
-            recordAudio()
+            speak("Soemthing else " + your_name)
         
 # initialization
 time.sleep(2)
