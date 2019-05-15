@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# Requires PyAudio and PySpeech.(command:pip install PyAudio && pip install PySpeech)
 
 # this is made by iamharsh.dev
 # you can buy me a coffee if you wants
@@ -135,7 +134,7 @@ def joe(data):
         
 # initialization
 time.sleep(2)
-speak("Hey this is Joe your personal Assistant how may i help you?")
+speak("Hey this is " + ai_name + " your personal Assistant how may i help you?")
 while 1:
     data = recordAudio()
     joe(data)
