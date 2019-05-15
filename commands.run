@@ -1,0 +1,7 @@
+pip install SpeechRecognition
+pip install PyAudio
+pip install PySpeech
+pip install wikipedia
+pip install wolframalpha
+pip install pyttsx
+pip install gtts
