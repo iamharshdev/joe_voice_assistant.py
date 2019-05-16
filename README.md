@@ -57,3 +57,7 @@ Now you can run the scipt on your any text editor or linux terminal
 
 **Windows users can use any text editor or official python compiler but i recommend VS CODE(Virtual Studio Code).**
 
+
+# contribution
+
+A lot can be done with this project. Core AI chatbot like functionality can be added. More python scripts can be associated. Pull requests for any such changes are accepted. Feel free to fork this project and make your own changes too.
