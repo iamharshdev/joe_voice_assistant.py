@@ -7,6 +7,8 @@ Before running the python script make  sure to execute commands.run file in your
 
 # installation😶😶 
 
+[![](http://img.youtube.com/vi/OMONPogM_7Y/0.jpg)](http://www.youtube.com/watch?v=OMONPogM_7Y)
+
 **Step 1**
 
 Clone or download the repository on your system.
